@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Chen 2018/2/23
  */
 public class Services {
-    private Service(){};
+    private Services(){}
 
     private static final Map<String,Provider> providers = new ConcurrentHashMap<String, Provider>();
 
@@ -22,6 +22,9 @@ public class Services {
         providers.put(name,p);
     }
 
+    public static Service newInstance(){
+        return newInstance(DEFAULT_PROVODER_NAME);
+    }
     public static Service newInstance(String name){
         Provider p = providers.get(name);
         if (p == null)
